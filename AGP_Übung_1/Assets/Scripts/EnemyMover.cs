@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyMover : MonoBehaviour {
 
-	public Renderer rend;
+	private Renderer rend;
 
 	[SerializeField]
 	private float speed;
@@ -21,7 +21,7 @@ public class EnemyMover : MonoBehaviour {
 		transform.position += new Vector3 (0f,-(speed * Time.deltaTime),0f);
 	}
 
-/*	void OnCollisionEnter(Collision col){
+	/*void OnCollisionEnter(Collision col){
 		float dissolve = Mathf.MoveTowards(0.0f,1.0f,1.0f);
 		rend.material.SetFloat("_DissolveFactor", dissolve);
 		new WaitForSeconds(2);

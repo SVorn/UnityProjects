@@ -7,8 +7,6 @@ public class Enemy : MonoBehaviour {
 	[SerializeField]
 	private GameObject enemy;
 
-	[SerializeField]
-	private int maxSpawnNum;
 	
 	[SerializeField]
 	private float speed;
@@ -20,7 +18,6 @@ public class Enemy : MonoBehaviour {
 	[SerializeField]
 	private float spawnTime = 4f;
 
-	public Renderer rend;
 	
 	// Use this for initialization
 	void Start () {
