@@ -7,13 +7,17 @@ public class PlayerController : MonoBehaviour {
 	
 	private Rigidbody2D rigidbodyPlayer;
 
+	private Animator playerAnimator;
+
 	[SerializeField]
 	private float speed;
 
 	private bool facingRightDirection;
 	// Use this for initialization
 	void Start () {
+		facingRightDirection = true;
 		rigidbodyPlayer = GetComponent<Rigidbody2D>();
+		playerAnimator = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -29,10 +33,12 @@ public class PlayerController : MonoBehaviour {
 	private void Movement(float horizontal){
 	//	rigidbodyPlayer.velocity = Vector2.left; //.left = x = -1, y = 0;
 		rigidbodyPlayer.velocity = new Vector2(horizontal * speed, rigidbodyPlayer.velocity.y);
+
+		playerAnimator.SetFloat("moveSpeed", Mathf.Abs(horizontal));
 	}
 
 	private void changeDirection(float horizontal){
-		if(horizontal < 0 && !facingRightDirection || horizontal > 0 && facingRightDirection){
+		if(horizontal > 0 && !facingRightDirection || horizontal < 0 && facingRightDirection){
 			facingRightDirection = !facingRightDirection;
 
 			Vector3 playerScale = transform.localScale;
