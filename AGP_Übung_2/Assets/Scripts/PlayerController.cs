@@ -39,6 +39,8 @@ public class PlayerController : MonoBehaviour {
 		facingRightDirection = true;
 		rigidbodyPlayer = GetComponent<Rigidbody2D>();
 		playerAnimator = GetComponent<Animator>();
+		GameObject gameControllerObject = GameObject.FindGameObjectWithTag("GameController");
+		gameController = gameControllerObject.GetComponent<GameController>();
 	}
 	
 	// Update is called once per frame
@@ -51,8 +53,19 @@ public class PlayerController : MonoBehaviour {
 		ChangeDirection(horizontal);
 
 		isGrounded = IsGrounded();
+		
 	//	inAir = false;
 	}
+
+	void OnTriggerEnter2D(Collider2D col){
+		if(col.tag == "Collectable"){
+			Debug.Log("aufgesammelt");
+			Destroy(col.gameObject);
+			gameController.NewScore(10);
+		}
+	}
+
+
 	private void Movement(float horizontal){
 	//	rigidbodyPlayer.velocity = Vector2.left; //.left = x = -1, y = 0;
 	

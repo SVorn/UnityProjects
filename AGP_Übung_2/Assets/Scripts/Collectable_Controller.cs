@@ -20,10 +20,10 @@ public class Collectable_Controller : MonoBehaviour {
 		
 	}
 
-	void OnCollision2DEnter(Collider2D coll){
+/*	void OnCollision2DEnter(Collision2D col){
 		Debug.Log("Collision");
 		Destroy(this.gameObject);
 		gameController.NewScore(scoreValue);
 
-	}
+	}*/
 }
