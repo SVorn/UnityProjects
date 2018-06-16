@@ -7,6 +7,9 @@ public class Camera_Controller : MonoBehaviour {
 	public GameObject Player;
 
 	private Vector3 cameraOffset;
+
+
+	
 	// Use this for initialization
 	void Start () {
 		cameraOffset = transform.position - Player.transform.position;
