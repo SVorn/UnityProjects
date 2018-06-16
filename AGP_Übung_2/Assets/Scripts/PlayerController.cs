@@ -53,13 +53,6 @@ public class PlayerController : MonoBehaviour {
 		isGrounded = IsGrounded();
 	//	inAir = false;
 	}
-
-/*	void OnCollision2DEnter(Collision2D coll){
-		Debug.Log("Collision");
-		Destroy(coll.gameObject, 0.1f);
-		Destroy(gameObject);
-	//	gameController.GameOver();
-	}*/
 	private void Movement(float horizontal){
 	//	rigidbodyPlayer.velocity = Vector2.left; //.left = x = -1, y = 0;
 	
@@ -81,8 +74,6 @@ public class PlayerController : MonoBehaviour {
 		isJumping = false;
 		//inAir = false;
 	}
-
-
 
 	private void ChangeDirection(float horizontal){
 		if(horizontal > 0 && !facingRightDirection || horizontal < 0 && facingRightDirection){

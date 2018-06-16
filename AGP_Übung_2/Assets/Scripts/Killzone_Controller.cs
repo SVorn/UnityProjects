@@ -1,14 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class Collectable_Controller : MonoBehaviour {
-
-	[SerializeField]
-	private int scoreValue;
+public class Killzone_Controller : MonoBehaviour {
 
 	private GameController gameController;
-
 	// Use this for initialization
 	void Start () {
 		GameObject gameControllerObject = GameObject.FindGameObjectWithTag("GameController");
@@ -20,10 +17,12 @@ public class Collectable_Controller : MonoBehaviour {
 		
 	}
 
-	void OnCollision2DEnter(Collider2D coll){
-		Debug.Log("Collision");
-		Destroy(this.gameObject);
-		gameController.NewScore(scoreValue);
-
+	void OnTriggerEnter2D(Collider2D col){
+		if (col.tag == "Player"){
+		Debug.Log("Spieler sollte sterben");
+		Destroy(col.gameObject, 2f);
+		gameController.GameOver();
+		//SceneManager.LoadScene("Main");
+		}
 	}
 }
