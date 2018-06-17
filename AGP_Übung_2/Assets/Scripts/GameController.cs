@@ -18,12 +18,14 @@ public class GameController : MonoBehaviour {
 	
 	private bool gameOver;
 	private bool restart;
+	private bool finish;
 	private int score;
 
 	// Use this for initialization
 	void Start () {
 		gameOver = false;
 		restart = false;
+		finish = false;
 		score = 0;
 		restartText.text = "";
 		gameOverText.text = "";
@@ -42,6 +44,10 @@ public class GameController : MonoBehaviour {
 			restartText.text = "Try again - Press 'F'";
 			restart = true;
 		}
+		if(finish){
+			restartText.text = "Good job :) - Try again with 'F'";
+			restart = true;
+		}
 	}
 
 	public void NewScore(int newValue){
@@ -56,5 +62,9 @@ public class GameController : MonoBehaviour {
 	public void GameOver(){
 		gameOverText.text = "You died";
 		gameOver = true;
+	}
+
+	public void RestartGame(){
+		finish = true;
 	}
 }
