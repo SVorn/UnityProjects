@@ -76,12 +76,14 @@ public class PlayerController : MonoBehaviour {
 	
 		if (Input.GetKeyDown(KeyCode.Space)){
 			isJumping = true;
+			playerAnimator.SetBool("grounded", false);
 		//	inAir = true;
 		}
 
 		if (isGrounded && isJumping){
 			isGrounded = false;
 			rigidbodyPlayer.AddForce(new Vector2(0, jumpPower));
+			
 		}
 
 		isJumping = false;
@@ -115,7 +117,7 @@ public class PlayerController : MonoBehaviour {
 				}
 				
 			}
-
+			playerAnimator.SetBool("grounded", true);
 		}
 		return false;
 	}
