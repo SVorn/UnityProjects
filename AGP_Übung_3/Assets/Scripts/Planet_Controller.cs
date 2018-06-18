@@ -14,9 +14,27 @@ public class Planet_Controller : MonoBehaviour {
 	private float distanceMultiplier;
 
 	public LayerMask layersToPull;
+
+	[SerializeField]
+	private float increment;
+	private float currentTime = 0f;
 	// Use this for initialization
 	void Start () {
-		
+	}
+
+	void Update(){
+/*		if(currentTime >= 10f){
+		transform.localScale += new Vector3(increment, increment, increment);
+		currentTime = 0f;
+		}
+		currentTime += Time.deltaTime;
+	}*/
+	//Scale the Planet over Time
+		Vector3 destinationScale = new Vector3(12f,12f,12f);
+		float time = 100f;
+
+		transform.localScale = Vector3.Lerp(transform.localScale, destinationScale, currentTime/time);
+		currentTime += Time.deltaTime;
 	}
 	
 	// Update is called once per frame

@@ -144,12 +144,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pullRadius: 100
-  gravityPull: 1000
+  gravityPull: 2000
   minRadius: 0.5
-  distanceMultiplier: 0.2
+  distanceMultiplier: 0.5
   layersToPull:
     serializedVersion: 2
     m_Bits: 4294967295
+  increment: 1
 --- !u!23 &614891866
 MeshRenderer:
   m_ObjectHideFlags: 0

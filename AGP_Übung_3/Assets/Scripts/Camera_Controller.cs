@@ -19,7 +19,7 @@ public class Camera_Controller : MonoBehaviour {
 		Vector3 desiredPosition = target.position + (target.rotation*offset);
 		Vector3 smoothedPos = Vector3.Lerp(transform.position, desiredPosition, smoothness * Time.deltaTime);
 		transform.position = smoothedPos;
-	//transform.LookAt(target);
+	
 
 		Quaternion desiredRotation = Quaternion.LookRotation(target.position - transform.position, target.up);
 		Quaternion rotation = Quaternion.Slerp(transform.rotation, desiredRotation, rotationSmoothness * Time.deltaTime);
