@@ -12,7 +12,7 @@ public class Player_Controller : MonoBehaviour {
 
 	private Rigidbody rigidPlayer;
 
-	Vector3 amountOfMovement;
+	Vector3 movement;
 	// Use this for initialization
 	void Start () {
 		rigidPlayer = GetComponent<Rigidbody>();
@@ -35,7 +35,7 @@ public class Player_Controller : MonoBehaviour {
 	}
 */
 	Vector3 targetDir = new Vector3(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"),0f).normalized;
-	amountOfMovement = targetDir*speed;
+	movement = targetDir*speed;
 	}
 	
 
@@ -53,7 +53,8 @@ public class Player_Controller : MonoBehaviour {
 	}*/
 
 	void FixedUpdate(){
-		rigidPlayer.MovePosition(rigidPlayer.position + transform.TransformDirection(amountOfMovement)* Time.fixedDeltaTime);
+		rigidPlayer.MovePosition(rigidPlayer.position + transform.TransformDirection(movement)* Time.fixedDeltaTime);
+	//	rigidPlayer.MoveRotation(rigidPlayer.transform.rotation);
 		//Original Code
 /*		Vector3 origin = Vector3.zero;
 
