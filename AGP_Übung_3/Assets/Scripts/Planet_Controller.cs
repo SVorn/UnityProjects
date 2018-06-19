@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Planet_Controller : MonoBehaviour {
-
+/* 
 	[SerializeField]
 	private float pullRadius;
 	[SerializeField]
@@ -14,14 +14,14 @@ public class Planet_Controller : MonoBehaviour {
 	private float distanceMultiplier;
 
 	public LayerMask layersToPull;
-
+*/
 	[SerializeField]
 	private float increment;
 	private float currentTime = 0f;
 
-	public Vector3 destinationScale;
+	private Vector3 destinationScale;
 
-	public float time;
+	private float time;
 
 	private float speed = 10f;
 	// Use this for initialization
@@ -29,18 +29,6 @@ public class Planet_Controller : MonoBehaviour {
 	}
 
 	void Update(){
-/*		if(currentTime >= 10f){
-		transform.localScale += new Vector3(increment, increment, increment);
-		currentTime = 0f;
-		}
-		currentTime += Time.deltaTime;
-	}*/
-	//Scale the Planet over Time
-		
-		//float time = 100f;
-		//destinationScale = new Vector3(transform.localScale.x,transform.localScale.y,transform.localScale.z);
-		//destinationScale = new Vector3(20f,20f,20f);
-		//IncreaseSize();
 		
 	//Control the Planet	
 	/*	if(Input.GetKey(KeyCode.A)){
@@ -62,7 +50,10 @@ public class Planet_Controller : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		Collider[] colliders = Physics.OverlapSphere(transform.position, pullRadius, layersToPull);
+
+	//Old Planet Gravity, allows for cool fly in moments!!!
+
+	/*	Collider[] colliders = Physics.OverlapSphere(transform.position, pullRadius, layersToPull);
 
 		foreach(var collider in colliders){
 			Rigidbody rb = collider.GetComponent<Rigidbody>();
@@ -77,7 +68,8 @@ public class Planet_Controller : MonoBehaviour {
 
 
 			rb.AddForce(direction.normalized * (gravityPull/distance)* rb.mass * Time.deltaTime);
-			}
+			}*/
+
 	}
 
 	public void IncreaseSize(){
