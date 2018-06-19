@@ -10,6 +10,7 @@ public class Collectable : MonoBehaviour {
 	[SerializeField]
 	private float incrValue;
 
+
 	
 	// Use this for initialization
 	void Awake () {

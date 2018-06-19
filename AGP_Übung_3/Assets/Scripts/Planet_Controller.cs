@@ -16,7 +16,7 @@ public class Planet_Controller : MonoBehaviour {
 	public LayerMask layersToPull;
 */
 
-	private float currentTime = 1f;
+	private float currentTime;
 
 
 	private Vector3 destinationScale;
@@ -33,15 +33,15 @@ public class Planet_Controller : MonoBehaviour {
 
 	void Update(){
 		destinationScale = new Vector3(transform.localScale.x + value, transform.localScale.y + value, transform.localScale.z + value);
-		while(transform.localScale.x < transform.localScale.x + value){
-		transform.localScale = Vector3.MoveTowards(transform.localScale, destinationScale, scaleSpeed*Time.deltaTime);
-		}
-		value = 0f;
-		destinationScale = transform.localScale;
+		transform.localScale = Vector3.Lerp(transform.localScale, destinationScale, scaleSpeed*Time.deltaTime);
+
+		
 	}
 	
 	// Update is called once per frame
-	void FixedUpdate () {
+	void LateUpdate () {
+	//	destinationScale = new Vector3(transform.localScale.x + value, transform.localScale.y + value, transform.localScale.z + value);
+	//	transform.localScale = Vector3.MoveTowards(transform.localScale, destinationScale, scaleSpeed*Time.deltaTime);
 
 	//Old Planet Gravity, allows for cool fly in moments!!!
 
@@ -75,6 +75,7 @@ public class Planet_Controller : MonoBehaviour {
 
 	public void Increment(float increment){
 		value = value + increment;
+	//	destinationScale = new Vector3(transform.localScale.x + value, transform.localScale.y + value, transform.localScale.z + value);
 	}
 }
 
