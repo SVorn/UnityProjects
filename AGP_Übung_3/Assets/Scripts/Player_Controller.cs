@@ -18,9 +18,10 @@ public class Player_Controller : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		vertical = Input.GetAxis("Vertical")* speed * Time.deltaTime;
+	
 		horizontal = Input.GetAxis("Horizontal")* speed * Time.deltaTime;
-
+		vertical = Input.GetAxis("Vertical")* speed * Time.deltaTime;
+	
 		//Movement(vertical, horizontal);
 		//Rotate(Vector3.zero, Vector3.right*vertical*speed*Time.deltaTime,1f);
 	}
@@ -40,6 +41,8 @@ public class Player_Controller : MonoBehaviour {
 	}*/
 
 	void FixedUpdate(){
+
+		//Original Code
 		Vector3 origin = Vector3.zero;
 
 		Quaternion hori = Quaternion.AngleAxis(-horizontal, Vector3.up);
@@ -47,8 +50,11 @@ public class Player_Controller : MonoBehaviour {
 
 		Quaternion q = hori * vert;
 		rigidPlayer.MovePosition(q*(rigidPlayer.transform.position-origin)+origin);
+		
+
 		//rigidPlayer.MoveRotation(rigidPlayer.transform.rotation*q);
 		//transform.LookAt(Vector3.zero);
+
 	}
 
 }
