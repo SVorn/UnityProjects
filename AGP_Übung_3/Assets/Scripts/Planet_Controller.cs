@@ -15,13 +15,16 @@ public class Planet_Controller : MonoBehaviour {
 
 	public LayerMask layersToPull;
 */
-	[SerializeField]
-	private float increment;
-	private float currentTime = 0f;
+
+	private float currentTime = 1f;
+
 
 	private Vector3 destinationScale;
 
-	private float time;
+	[SerializeField]
+	private float scaleSpeed;
+
+	private float value = 0f;
 
 	private float speed = 10f;
 	// Use this for initialization
@@ -29,23 +32,12 @@ public class Planet_Controller : MonoBehaviour {
 	}
 
 	void Update(){
-		
-	//Control the Planet	
-	/*	if(Input.GetKey(KeyCode.A)){
-			transform.Rotate(0,-speed * Time.deltaTime,0f);
+		destinationScale = new Vector3(transform.localScale.x + value, transform.localScale.y + value, transform.localScale.z + value);
+		while(transform.localScale.x < transform.localScale.x + value){
+		transform.localScale = Vector3.MoveTowards(transform.localScale, destinationScale, scaleSpeed*Time.deltaTime);
 		}
-		if(Input.GetKey(KeyCode.D)){
-			transform.Rotate(0,speed*Time.deltaTime,0f);
-		}
-		if(Input.GetKey(KeyCode.W)){
-			transform.Rotate(speed * Time.deltaTime,0f,0f);
-		}
-		if(Input.GetKey(KeyCode.S)){
-			transform.Rotate(-speed*Time.deltaTime,0f,0f);
-		}*/
-
-
-
+		value = 0f;
+		destinationScale = transform.localScale;
 	}
 	
 	// Update is called once per frame
@@ -72,13 +64,17 @@ public class Planet_Controller : MonoBehaviour {
 
 	}
 
-	public void IncreaseSize(){
+/*	public void IncreaseSize(Vector3 destinationScale,float time){
 		// need a loop i think
 		Debug.Log("hi");
 		{
 		transform.localScale = Vector3.Lerp(transform.localScale, destinationScale, currentTime/time);
 		currentTime += Time.deltaTime;
 		}
+	}*/
+
+	public void Increment(float increment){
+		value = value + increment;
 	}
 }
 

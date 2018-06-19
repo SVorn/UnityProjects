@@ -6,9 +6,15 @@ public class Collectable : MonoBehaviour {
 
 	public GameObject planet;
 	private Planet_Controller planet_Controller;
+
+	[SerializeField]
+	private float incrValue;
+
+	
 	// Use this for initialization
 	void Awake () {
-		planet_Controller = planet.GetComponent<Planet_Controller>();;
+		planet_Controller = planet.GetComponent<Planet_Controller>();
+
 	}
 	
 	// Update is called once per frame
@@ -19,7 +25,7 @@ public class Collectable : MonoBehaviour {
 	void OnTriggerEnter(Collider col){
 		if(col.tag =="Player"){
 		Debug.Log("Hit");
-		//planet_Controller.IncreaseSize();
+		planet_Controller.Increment(incrValue);
 		//Destroy(this.gameObject);
 		}
 	}

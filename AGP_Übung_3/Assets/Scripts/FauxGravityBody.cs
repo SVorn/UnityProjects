@@ -6,7 +6,7 @@ public class FauxGravityBody : MonoBehaviour {
 	private FauxGravityAttractor attractor;
 	private Rigidbody rb;
 
-	public bool placeNotOnSurface = false;
+	public bool placeOnSurface = false;
 
 	void Start ()
 	{
@@ -16,8 +16,8 @@ public class FauxGravityBody : MonoBehaviour {
 	
 	void FixedUpdate ()
 	{
-		if (placeNotOnSurface)
-			attractor.PlaceNotOnSurface(rb);
+		if (placeOnSurface)
+			attractor.PlaceOnSurface(rb);
 		else
 			attractor.Attract(rb);
 	}
