@@ -7,10 +7,12 @@ public class Player_Controller : MonoBehaviour {
 	[SerializeField]
 	private float speed;
 
-	private float horizontal = 0f;
-	private float vertical = 0f;
+	[SerializeField]
+	private float turnSpeed;
 
 	private Rigidbody rigidPlayer;
+
+	Vector3 movement;
 	// Use this for initialization
 	void Start () {
 		rigidPlayer = GetComponent<Rigidbody>();
@@ -18,11 +20,22 @@ public class Player_Controller : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		vertical = Input.GetAxis("Vertical")* speed * Time.deltaTime;
-		horizontal = Input.GetAxis("Horizontal")* speed * Time.deltaTime;
-
-		//Movement(vertical, horizontal);
-		//Rotate(Vector3.zero, Vector3.right*vertical*speed*Time.deltaTime,1f);
+	
+	//	horizontal = Input.GetAxis("Horizontal")* speed * Time.deltaTime;
+	//  vertical = Input.GetAxis("Vertical")* speed * Time.deltaTime;
+	//transform.Rotate(Vector3.forward*Input.GetAxis("Horizontal")*Time.deltaTime *speed);
+	
+		
+	//Rotate so Player is always moving forward
+/*	if(Input.GetKey(KeyCode.A)){
+		transform.Rotate(Vector3.forward*1*Time.deltaTime*turnSpeed);
+	}
+	if(Input.GetKey(KeyCode.D)){
+		transform.Rotate(Vector3.forward*-1*Time.deltaTime*turnSpeed);
+	}
+*/
+	Vector3 targetDir = new Vector3(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"),0f).normalized;
+	movement = targetDir*speed;
 	}
 	
 
@@ -40,15 +53,21 @@ public class Player_Controller : MonoBehaviour {
 	}*/
 
 	void FixedUpdate(){
-		Vector3 origin = Vector3.zero;
+		rigidPlayer.MovePosition(rigidPlayer.position + transform.TransformDirection(movement)* Time.fixedDeltaTime);
+	//	rigidPlayer.MoveRotation(rigidPlayer.transform.rotation);
+		//Original Code
+/*		Vector3 origin = Vector3.zero;
 
 		Quaternion hori = Quaternion.AngleAxis(-horizontal, Vector3.up);
 		Quaternion vert = Quaternion.AngleAxis(vertical, Vector3.right);
 
 		Quaternion q = hori * vert;
 		rigidPlayer.MovePosition(q*(rigidPlayer.transform.position-origin)+origin);
+*/		
+
 		//rigidPlayer.MoveRotation(rigidPlayer.transform.rotation*q);
 		//transform.LookAt(Vector3.zero);
+
 	}
 
 }

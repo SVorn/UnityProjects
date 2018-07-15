@@ -25,7 +25,7 @@ public class Camera_Controller : MonoBehaviour {
 		Quaternion rotation = Quaternion.Slerp(transform.rotation, desiredRotation, rotationSmoothness * Time.deltaTime);
 		transform.rotation = rotation;
 		
-		//transform.LookAt(target);
+		//transform.LookAt(target.forward);
 		
 
 
