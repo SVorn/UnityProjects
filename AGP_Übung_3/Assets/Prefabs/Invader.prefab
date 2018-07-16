@@ -125,6 +125,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SphereCollider: {fileID: 135480845806245328}
+  invaderHeight: 50
+  lineRenderer: {fileID: 1851402608847318, guid: 79d75e9815c9346aeaf1366198e80a5b,
+    type: 2}
 --- !u!135 &135480845806245328
 SphereCollider:
   m_ObjectHideFlags: 1

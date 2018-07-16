@@ -14,8 +14,9 @@ public class Bullet : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		transform.position += new Vector3(0f,0f,-speed*Time.deltaTime);
 
+		//shoot bullet into negative forward direction of the object
+		transform.position += transform.forward*(-speed*Time.deltaTime);
 		Destroy(gameObject,2f);
 	}
 }

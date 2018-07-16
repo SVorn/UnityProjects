@@ -20,6 +20,7 @@ public class Spawner : MonoBehaviour {
 		//Random Spawn around the Sphere
 		Vector3 pos = Random.onUnitSphere * spawnDistance;
 		Instantiate(invader, pos, Quaternion.identity);
+		Debug.DrawRay(pos, transform.forward, Color.green);
 
 		yield return new WaitForSeconds(10f);
 
