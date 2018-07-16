@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Invader_Controller : MonoBehaviour {
+public class Bullet : MonoBehaviour {
 
-	public SphereCollider SphereCollider;
+	[SerializeField]
+	private float speed;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -12,11 +14,8 @@ public class Invader_Controller : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+		transform.position += new Vector3(0f,0f,-speed*Time.deltaTime);
 
-	void OnCollisionEnter(Collision col){
-	//	Destroy(col.gameObject, 2f);
-		Destroy(gameObject);
+		Destroy(gameObject,2f);
 	}
 }
