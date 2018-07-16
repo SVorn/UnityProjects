@@ -18,6 +18,7 @@ public class Planet_Controller : MonoBehaviour {
 
 	private float currentTime;
 
+	float timeToMove = 5f;
 
 	private Vector3 destinationScale;
 
@@ -26,26 +27,35 @@ public class Planet_Controller : MonoBehaviour {
 
 	private float value = 0f;
 
-	private float speed = 10f;
+	private float speed;
 	// Use this for initialization
 	void Start () {
 	}
 
 	void Update(){
-		destinationScale = new Vector3(transform.localScale.x + value, transform.localScale.y + value, transform.localScale.z + value);
-		transform.localScale = Vector3.Lerp(transform.localScale, destinationScale, scaleSpeed*Time.deltaTime);
+	/*	if(currentTime <= timeToMove){
+			currentTime += Time.deltaTime;
+		}
+		value = 0;*/
 
+	//	destinationScale = new Vector3(transform.localScale.x + value, transform.localScale.y + value, transform.localScale.z + value);
+/*		float i = 0f;
+		while(i < 1.0){
+			i += Time.deltaTime * scaleSpeed;
+			transform.localScale = Vector3.Lerp(transform.localScale, destinationScale, i);
 		
+		}
+		value = 0;*/
 	}
 	
 	// Update is called once per frame
-	void LateUpdate () {
+/*	void LateUpdate () {
 	//	destinationScale = new Vector3(transform.localScale.x + value, transform.localScale.y + value, transform.localScale.z + value);
 	//	transform.localScale = Vector3.MoveTowards(transform.localScale, destinationScale, scaleSpeed*Time.deltaTime);
 
 	//Old Planet Gravity, allows for cool fly in moments!!!
 
-	/*	Collider[] colliders = Physics.OverlapSphere(transform.position, pullRadius, layersToPull);
+		Collider[] colliders = Physics.OverlapSphere(transform.position, pullRadius, layersToPull);
 
 		foreach(var collider in colliders){
 			Rigidbody rb = collider.GetComponent<Rigidbody>();
@@ -60,22 +70,27 @@ public class Planet_Controller : MonoBehaviour {
 
 
 			rb.AddForce(direction.normalized * (gravityPull/distance)* rb.mass * Time.deltaTime);
-			}*/
+			}
 
-	}
-
-/*	public void IncreaseSize(Vector3 destinationScale,float time){
-		// need a loop i think
-		Debug.Log("hi");
-		{
-		transform.localScale = Vector3.Lerp(transform.localScale, destinationScale, currentTime/time);
-		currentTime += Time.deltaTime;
-		}
 	}*/
 
 	public void Increment(float increment){
+		Debug.Log("Increment");
 		value = value + increment;
+		Scale();
 	//	destinationScale = new Vector3(transform.localScale.x + value, transform.localScale.y + value, transform.localScale.z + value);
+	}
+
+	void Scale(){
+		Debug.Log("Scale");
+		destinationScale = new Vector3(transform.localScale.x + value, transform.localScale.y + value, transform.localScale.z + value);
+		float i = 0f;
+		while(i < 1.0){
+			i += Time.deltaTime * scaleSpeed;
+			transform.localScale = Vector3.Lerp(transform.localScale, destinationScale, i);
+		
+		}
+		value = 0;
 	}
 }
 

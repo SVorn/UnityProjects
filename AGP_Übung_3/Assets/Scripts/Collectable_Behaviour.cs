@@ -27,7 +27,7 @@ public class Collectable : MonoBehaviour {
 		if(col.tag =="Player"){
 		Debug.Log("Hit");
 		planet_Controller.Increment(incrValue);
-		//Destroy(this.gameObject);
+		Destroy(this.gameObject);
 		}
 	}
 }
