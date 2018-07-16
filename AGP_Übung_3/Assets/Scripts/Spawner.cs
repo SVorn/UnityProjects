@@ -17,10 +17,11 @@ public class Spawner : MonoBehaviour {
 	//Method to Spawn the Invaders
 
 	IEnumerator SpawnInvader(){
-		Vector3 pos = Random.onUnitSphere * 20f;
+		//Random Spawn around the Sphere
+		Vector3 pos = Random.onUnitSphere * spawnDistance;
 		Instantiate(invader, pos, Quaternion.identity);
 
-		yield return new WaitForSeconds(5f);
+		yield return new WaitForSeconds(10f);
 
 		StartCoroutine(SpawnInvader());
 	}
