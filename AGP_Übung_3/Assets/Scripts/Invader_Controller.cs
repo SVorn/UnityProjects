@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Invader_Controller : MonoBehaviour {
 
 	public SphereCollider SphereCollider;
@@ -14,9 +15,12 @@ public class Invader_Controller : MonoBehaviour {
 	private Vector3 hitPos;
 
 	private bool isCreated = false;
+
+	private GameController gameController;
 	// Use this for initialization
 	void Start () {
-		
+		GameObject gameControllerObject = GameObject.FindGameObjectWithTag("GameController");
+		gameController = gameControllerObject.GetComponent<GameController>();
 	}
 	
 	// Update is called once per frame
@@ -35,8 +39,12 @@ public class Invader_Controller : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision col){
-	//	Destroy(col.gameObject, 2f);
+	//	if(col.tag == "Planet"){
+		Debug.Log("Planet dies");
+		Destroy(col.gameObject);
 		Destroy(gameObject);
+	//	}
+		gameController.GameOver();
 	}
 
 	void DrawTrajectory(Vector3 hitPos){
