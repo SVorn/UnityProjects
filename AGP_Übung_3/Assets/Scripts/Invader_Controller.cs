@@ -10,13 +10,20 @@ public class Invader_Controller : MonoBehaviour {
 	[SerializeField]
 	private float invaderHeight;
 
-	public GameObject lineRenderer;
+	public GameObject marker;
 
 	private Vector3 hitPos;
 
 	private bool isCreated = false;
 
 	private GameController gameController;
+	
+	[SerializeField]
+	private GameObject destroyEffect;
+
+	Vector3 vec3 = new Vector3(0,0,0);
+
+	
 	// Use this for initialization
 	void Start () {
 		GameObject gameControllerObject = GameObject.FindGameObjectWithTag("GameController");
@@ -39,17 +46,18 @@ public class Invader_Controller : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision col){
-	//	if(col.tag == "Planet"){
+		if(col.collider.tag == "Planet"){
 		Debug.Log("Planet dies");
 		Destroy(col.gameObject);
-		Destroy(gameObject);
-	//	}
+		Instantiate(destroyEffect, vec3 ,transform.rotation);
 		gameController.GameOver();
+		}
+		Destroy(gameObject);
 	}
 
 	void DrawTrajectory(Vector3 hitPos){
 		if(!isCreated){
-		Instantiate(lineRenderer, hitPos, transform.rotation);
+		Instantiate(marker, hitPos, transform.rotation);
 		isCreated = true;
 		}
 	}

@@ -47,12 +47,12 @@ public class GameController : MonoBehaviour {
 		string minutes = ((int) t / 60).ToString();
 		string seconds = (t % 60).ToString("f0");
 
-		timeText.text = minutes + " : " + seconds;
+		timeText.text = minutes + " minute and " + seconds + " seconds";
 		}
 	}
 	
 	public void GameOver(){
-		gameOverText.text = "You died";
+	//	gameOverText.text = "You died";
 		gameOver = true;
 	//	Time.timeScale = 0; //tried to pause game while dead
 	}
