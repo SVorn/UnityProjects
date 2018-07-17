@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4081522614773696}
   - component: {fileID: 198251590622414542}
   - component: {fileID: 199428603539388752}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: InvaderEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 54489780748633830}
   - component: {fileID: 114579827676594180}
   - component: {fileID: 114405661950027012}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: InvaderCombine
   m_TagString: Invader
   m_Icon: {fileID: 0}

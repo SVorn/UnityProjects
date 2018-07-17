@@ -4,11 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Planet
-<<<<<<< HEAD
-=======
   - Invader
->>>>>>> branch
+  - Planet
   layers:
   - Default
   - TransparentFX
@@ -18,9 +15,9 @@ TagManager:
   - UI
   - 
   - 
-  - Player
-  - Planet
   - Invader
+  - Planet
+  - Player
   - Defense
   - Bullet
   - 
