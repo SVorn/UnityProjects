@@ -56,6 +56,7 @@ public class Planet_Controller : MonoBehaviour {
 			Destroy(col.gameObject);
 			Debug.Log("Planet dies");
 			TakesHit();
+			gameController.Warning();
 		}
 	}
 

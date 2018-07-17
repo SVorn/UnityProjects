@@ -14,6 +14,9 @@ public class GameController : MonoBehaviour {
 
 	[SerializeField]
 	private Text timeText;
+
+	[SerializeField]
+	private Text warningText;
 	private bool gameOver;
 	private bool restart;
 	private float startTime;
@@ -23,6 +26,7 @@ public class GameController : MonoBehaviour {
 		restart = false;
 		restartText.text = "";
 		gameOverText.text = "";
+		warningText.text = "";
 		startTime = Time.time;
 	}
 	
@@ -55,6 +59,11 @@ public class GameController : MonoBehaviour {
 	//	gameOverText.text = "You died";
 		gameOver = true;
 	//	Time.timeScale = 0; //tried to pause game while dead
+	}
+
+	public void Warning(){
+		Debug.Log("Warning");
+		warningText.text = "Warning you have been hit - The Alien substance makes the planet grow";
 	}
 
 }
