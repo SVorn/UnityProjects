@@ -9,8 +9,9 @@ public class Invader_Controller : MonoBehaviour {
 
 	[SerializeField]
 	private float invaderHeight;
-
-	public GameObject marker;
+	
+	[SerializeField]
+	private GameObject marker;
 
 	private Vector3 hitPos;
 
@@ -18,7 +19,8 @@ public class Invader_Controller : MonoBehaviour {
 
 	private Planet_Controller planet_Controller;
 
-	public GameObject planet;
+	[SerializeField]
+	private GameObject planet;
 
 	
 	// Use this for initialization

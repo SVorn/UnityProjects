@@ -3,21 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FauxGravityAttractor : MonoBehaviour {
-
+/*Needs an counter part to work -> FauxGravityBody */
+/*Programmed after a Tutorial by Brackeys(Youtube)*/
 	public static FauxGravityAttractor instance;
 
-	private SphereCollider col;
+	private SphereCollider sphereCol;
 
+	[SerializeField]
+	private float gravity;
 	void Awake ()
 	{
 		instance = this;
-		col = GetComponent<SphereCollider>();
+		sphereCol = GetComponent<SphereCollider>();
 	}
 
-	public float gravity = -10f;
 
 	public void Attract (Rigidbody body)
-	{
+	{	//Adds Force to Rigidbody towards itself
 		Vector3 targetDirection = (body.position - transform.position).normalized;
 		body.AddForce(targetDirection * gravity);
 
@@ -25,8 +27,8 @@ public class FauxGravityAttractor : MonoBehaviour {
 	}
 
 	public void PlaceOnSurface (Rigidbody body)
-	{
-		body.MovePosition((body.position - transform.position).normalized * (transform.localScale.x * col.radius));
+	{	//moves body directly on the surface by considering the Sphere Radius(Collider Size)
+		body.MovePosition((body.position - transform.position).normalized * (transform.localScale.x * sphereCol.radius));
 
 		RotateBody(body);
 	}

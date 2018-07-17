@@ -2,11 +2,12 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 public class FauxGravityBody : MonoBehaviour {
-
+/*Counterpart to the Attractor */
 	private FauxGravityAttractor attractor;
 	private Rigidbody rb;
-
-	public bool placeOnSurface = false;
+	
+	[SerializeField]
+	private bool placeOnSurface = false;
 
 	void Start ()
 	{
@@ -15,6 +16,7 @@ public class FauxGravityBody : MonoBehaviour {
 	}
 	
 	void FixedUpdate ()
+	//give Component Rigidbody to Attractor
 	{
 		if (placeOnSurface)
 			attractor.PlaceOnSurface(rb);

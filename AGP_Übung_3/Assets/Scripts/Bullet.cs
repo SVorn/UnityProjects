@@ -15,11 +15,11 @@ public class Bullet : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		//shoot bullet into negative forward direction of the object
-		transform.position += transform.forward*(-speed*Time.deltaTime);
-		Destroy(gameObject,2f);
+	//shoot bullet into negative forward direction of the object
+	transform.position += transform.forward*(-speed*Time.deltaTime);
+	Destroy(gameObject,2f);
 	}
-
+	//destroy Invaders
 	void OnCollisionEnter(Collision col){
 		Destroy(col.gameObject);
 	}
