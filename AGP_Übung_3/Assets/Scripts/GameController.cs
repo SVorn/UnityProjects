@@ -58,7 +58,7 @@ public class GameController : MonoBehaviour {
 		string minutes = ((int) t / 60).ToString();
 		string seconds = (t % 60).ToString("f0");
 
-		timeText.text = minutes + " minutes and " + seconds + " seconds";
+		timeText.text = minutes + " min & " + seconds + " sec";
 		}
 	}
 	
@@ -70,7 +70,7 @@ public class GameController : MonoBehaviour {
 
 	public void Warning(){
 	//	Debug.Log("Warning");
-		warningText.text = "Warning you have been hit - The Alien substance makes the planet grow";
+		warningText.text = "Warning! You've been hit - The Alien substance makes the planet grow";
 	}
 
 	public void LifeBar(){
