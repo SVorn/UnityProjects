@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 114579827676594180}
   - component: {fileID: 114405661950027012}
   m_Layer: 10
-  m_Name: Invader 1 1
+  m_Name: InvaderCombine
   m_TagString: Invader
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -145,8 +145,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SphereCollider: {fileID: 135923329473667800}
   invaderHeight: 50
-  marker: {fileID: 0}
-  destroyEffect: {fileID: 0}
+  marker: {fileID: 1025406898353782, guid: e901af0ae00264ac9bdfc15c4934d62f, type: 2}
+  planet: {fileID: 1205114344803618, guid: 38496dbddc37a412e9e57abbd4e2add4, type: 2}
 --- !u!114 &114579827676594180
 MonoBehaviour:
   m_ObjectHideFlags: 1

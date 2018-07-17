@@ -16,18 +16,15 @@ public class Invader_Controller : MonoBehaviour {
 
 	private bool isCreated = false;
 
-	private GameController gameController;
-	
-	[SerializeField]
-	private GameObject destroyEffect;
+	private Planet_Controller planet_Controller;
 
-	Vector3 vec3 = new Vector3(0,0,0);
+	public GameObject planet;
 
 	
 	// Use this for initialization
 	void Start () {
-		GameObject gameControllerObject = GameObject.FindGameObjectWithTag("GameController");
-		gameController = gameControllerObject.GetComponent<GameController>();
+		planet_Controller = planet.GetComponent<Planet_Controller>();
+		
 	}
 	
 	// Update is called once per frame
@@ -45,15 +42,13 @@ public class Invader_Controller : MonoBehaviour {
 		}
 	}
 
-	void OnCollisionEnter(Collision col){
+/*	void OnCollisionEnter(Collision col){
+		Destroy(gameObject);
 		if(col.collider.tag == "Planet"){
 		Debug.Log("Planet dies");
-		Destroy(col.gameObject);
-		Instantiate(destroyEffect, vec3 ,transform.rotation);
-		gameController.GameOver();
+		planet_Controller.TakesHit();
 		}
-		Destroy(gameObject);
-	}
+	}*/
 
 	void DrawTrajectory(Vector3 hitPos){
 		if(!isCreated){
