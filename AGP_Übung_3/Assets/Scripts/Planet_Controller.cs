@@ -57,6 +57,7 @@ public class Planet_Controller : MonoBehaviour {
 			Debug.Log("Planet dies");
 			TakesHit();
 			gameController.Warning();
+			gameController.LifeBar();
 		}
 	}
 
@@ -69,7 +70,7 @@ public class Planet_Controller : MonoBehaviour {
 
 	//Planet can be hit to 3 times, after that it "destroyed" -> no actual destroy because it is an asset
 	void TakesHit(){
-		if(amountOfHits >= 3){
+		if(amountOfHits >= 2){
 			Debug.Log("End Game");
 			Instantiate(destroyEffect, vec3 ,transform.rotation);
 			gameController.GameOver();

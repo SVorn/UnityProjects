@@ -17,9 +17,13 @@ public class GameController : MonoBehaviour {
 
 	[SerializeField]
 	private Text warningText;
+
+	[SerializeField]
+	private Text lifeText;
 	private bool gameOver;
 	private bool restart;
 	private float startTime;
+	private float amountOfLife;
 	// Use this for initialization
 	void Start () {
 		gameOver = false;
@@ -28,10 +32,13 @@ public class GameController : MonoBehaviour {
 		gameOverText.text = "";
 		warningText.text = "";
 		startTime = Time.time;
+		amountOfLife = 3;
+		lifeText.text = "Life: " + amountOfLife;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		
 		//reload the current scene at restart -> ! if new scene change name to given scene
 		if(restart){
 			if(Input.GetKey(KeyCode.F)){
@@ -51,7 +58,7 @@ public class GameController : MonoBehaviour {
 		string minutes = ((int) t / 60).ToString();
 		string seconds = (t % 60).ToString("f0");
 
-		timeText.text = minutes + " minute and " + seconds + " seconds";
+		timeText.text = minutes + " minutes and " + seconds + " seconds";
 		}
 	}
 	
@@ -62,8 +69,14 @@ public class GameController : MonoBehaviour {
 	}
 
 	public void Warning(){
-		Debug.Log("Warning");
+	//	Debug.Log("Warning");
 		warningText.text = "Warning you have been hit - The Alien substance makes the planet grow";
+	}
+
+	public void LifeBar(){
+		amountOfLife = amountOfLife - 1;
+		Debug.Log(amountOfLife);
+		lifeText.text = "Life: " + amountOfLife;	
 	}
 
 }
