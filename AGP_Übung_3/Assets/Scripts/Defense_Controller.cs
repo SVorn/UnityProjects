@@ -9,13 +9,14 @@ public class Defense_Controller : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		StartCoroutine(Shooting());
+		Destroy(gameObject,10f);
 	}
 	
 	IEnumerator Shooting(){
 		Vector3 pos = new Vector3(transform.position.x, transform.position.y,transform.position.z);
-		Instantiate(bulletPrefab, pos + (-transform.forward), transform.rotation);
+		Instantiate(bulletPrefab, pos, transform.rotation);
 
-		yield return new WaitForSeconds(5f);
+		yield return new WaitForSeconds(3f);
 
 		StartCoroutine(Shooting());
 	}

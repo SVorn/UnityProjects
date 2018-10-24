@@ -21,7 +21,7 @@ public class Spawner : MonoBehaviour {
 		Vector3 pos = Random.onUnitSphere * spawnDistance;
 		Instantiate(invader, pos, Quaternion.identity);
 
-		yield return new WaitForSeconds(10f);
+		yield return new WaitForSeconds(12f);
 
 		StartCoroutine(SpawnInvader());
 	}

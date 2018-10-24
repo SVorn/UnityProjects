@@ -27,55 +27,58 @@ public class Planet_Controller : MonoBehaviour {
 	private float value = 0f;
 
 	private float speed = 10f;
+
+	private float amountOfHits;
+
+	private GameController gameController;
+	
+	[SerializeField]
+	private GameObject destroyEffect;
+
+	Vector3 vec3 = new Vector3(0,0,0);
+
 	// Use this for initialization
 	void Start () {
+		amountOfHits = 0;
+		GameObject gameControllerObject = GameObject.FindGameObjectWithTag("GameController");
+		gameController = gameControllerObject.GetComponent<GameController>();
 	}
 
+	// Update is called once per frame
 	void Update(){
 		destinationScale = new Vector3(transform.localScale.x + value, transform.localScale.y + value, transform.localScale.z + value);
 		transform.localScale = Vector3.Lerp(transform.localScale, destinationScale, scaleSpeed*Time.deltaTime);
-
-		
+	
 	}
 	
-	// Update is called once per frame
-	void LateUpdate () {
-	//	destinationScale = new Vector3(transform.localScale.x + value, transform.localScale.y + value, transform.localScale.z + value);
-	//	transform.localScale = Vector3.MoveTowards(transform.localScale, destinationScale, scaleSpeed*Time.deltaTime);
-
-	//Old Planet Gravity, allows for cool fly in moments!!!
-
-	/*	Collider[] colliders = Physics.OverlapSphere(transform.position, pullRadius, layersToPull);
-
-		foreach(var collider in colliders){
-			Rigidbody rb = collider.GetComponent<Rigidbody>();
-
-			if(rb == null) continue;
-
-			Vector3 direction = transform.position - collider.transform.position;
-
-			if(direction.magnitude < minRadius) continue;
-			
-			float distance = direction.sqrMagnitude*distanceMultiplier + 1;
-
-
-			rb.AddForce(direction.normalized * (gravityPull/distance)* rb.mass * Time.deltaTime);
-			}*/
-
+	void OnCollisionEnter(Collision col){
+		if(col.collider.tag == "Invader"){
+			Destroy(col.gameObject);
+			Debug.Log("Planet dies");
+			TakesHit();
+			gameController.Warning();
+			gameController.LifeBar();
+		}
 	}
 
-/*	public void IncreaseSize(Vector3 destinationScale,float time){
-		// need a loop i think
-		Debug.Log("hi");
-		{
-		transform.localScale = Vector3.Lerp(transform.localScale, destinationScale, currentTime/time);
-		currentTime += Time.deltaTime;
-		}
-	}*/
 
 	public void Increment(float increment){
-		value = value + increment;
+		Debug.Log("Increment");
+		value += increment;
 	//	destinationScale = new Vector3(transform.localScale.x + value, transform.localScale.y + value, transform.localScale.z + value);
+	}
+
+	//Planet can be hit to 3 times, after that it "destroyed" -> no actual destroy because it is an asset
+	void TakesHit(){
+		if(amountOfHits >= 2){
+			Debug.Log("End Game");
+			Instantiate(destroyEffect, vec3 ,transform.rotation);
+			gameController.GameOver();
+			gameObject.active = false;
+		}
+		amountOfHits += 1;
+		Increment(1);
+		Debug.Log(amountOfHits);
 	}
 }
 
