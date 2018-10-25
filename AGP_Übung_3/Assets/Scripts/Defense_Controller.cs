@@ -8,6 +8,7 @@ public class Defense_Controller : MonoBehaviour {
 	private GameObject bulletPrefab;
 	// Use this for initialization
 	void Start () {
+		//Coroutine runs to completion before returning !actung within a single frame update?
 		StartCoroutine(Shooting());
 		Destroy(gameObject,10f);
 	}

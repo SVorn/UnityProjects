@@ -46,7 +46,7 @@ public class Player : MonoBehaviour {
 		}
 
 	}
-	void OnCollisionEnter(Collider2D coll){
+	void OnCollisionEnter(Collision coll){
 		Debug.Log("Collision");
 		Destroy(coll.gameObject, 0.1f);
 		Destroy(gameObject);
