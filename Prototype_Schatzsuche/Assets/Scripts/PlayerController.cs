@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour {
 
 	public Camera camera;
 	[SerializeField]
-	private GameObject cameraTarget;
+	private GameObject target;
 	private float singleTouchLength;
 	private float singleTouchBeginnTime;
 
@@ -42,7 +42,8 @@ public class PlayerController : MonoBehaviour {
                     }
                     else
                     {
-                        MoveCamera(touch);
+                      //  MoveCamera(touch);
+					  MoveCube(touch);
                     }
 			
 		}
@@ -65,9 +66,14 @@ public class PlayerController : MonoBehaviour {
         Vector2 touchPrevPos = touch.position - touch.deltaPosition;
 		Vector2 movementVector;
 
-		movementVector = touch.deltaPosition * (movementSpeed / 200000) * (cameraTarget.transform.position.y * 100);
-		cameraTarget.transform.position -= cameraTarget.transform.TransformDirection(new Vector3(movementVector.x, movementVector.y, 0f));
+		movementVector = touch.deltaPosition * (movementSpeed / 100000) * (camera.transform.position.y * 100);
+		camera.transform.position -= camera.transform.TransformDirection(new Vector3(movementVector.x, movementVector.y, 0f));
 
 
+	}
+
+	void MoveCube(Touch touch){
+	//	target.transform.Rotate(touch.deltaPosition.y*movementSpeed,touch.deltaPosition.x * movementSpeed,0,Space.World);
+		target.transform.RotateAround(Vector3.zero,Vector3.up,touch.deltaPosition.x*movementSpeed);
 	}
 }
